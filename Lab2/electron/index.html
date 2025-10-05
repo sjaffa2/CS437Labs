@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/gauge.js"></script>
+    <script src="./js/battery.js"></script>
+    <link rel="stylesheet" href="css/main.css"> 
+  </head>
+
+  <body>
+    <div class="container" style="width: 100%">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">CS437 Lab2</h1>
+          <p class="lead">This page demonstrates communication from frontend (webpage) to backend (Pi), while dynamically updating the information displayed.</p>
+          <hr class="my-4">
+          <p class="lead">Information retrieved: battery, car direction, speed, power, temperature of Pi, and distance travelled.</p>
+          <hr class="my-4">
+          <p class="lead">It can also control the car using keyboards or buttons, while observing environments around the car with livestream from the car.</p>
+          <hr class="my-4">
+        </div>
+      </div>
+      <div class="container text-center">
+        <img id='livefeed' width=600 height=400 class="hidden" src="http://192.168.11.11:9000/mjpg" />
+        <img id="defaultImg" src="./media/default_background.png" />
+      </div>
+      <div class="container text-center" style="margin-top:1rem;">
+        <button class="btn btn-warning btn-lg" onclick="toggle_camera()">Toggle Camera</button>
+      </div>
+      <div class="container text-center" style="margin-top: 3rem; margin-bottom: 3rem;">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="row">
+              <button id="dirForward" type="button" class="btn btn-light btn-lg arrow" onclick="updateDirection('dirForward')">&#10506;</button>
+            </div>
+            <div class="row">
+              <div class="col-xs-0 col-sm-0 col-md-2"></div>
+              <div class="col-xs-5 col-sm-5 col-md-3 arrow-col">
+                <button id="dirLeft" type="button" class="btn btn-light btn-lg arrow-side" onclick="updateDirection('dirLeft')">&#8666;</button>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-2 stop-div">
+                <button id="dirStop" type="button" class="btn btn-light btn-lg stop" onclick="updateDirection('dirStop')">&#5028;</button>
+              </div>
+              <div class="col-xs-5 col-sm-5 col-md-3 arrow-col">
+                <button id="dirRight" type="button" class="btn btn-light btn-lg arrow-side" onclick="updateDirection('dirRight')">&#8667;</button>
+              </div>
+              <div class="col-xs-0 col-sm-0 col-md-2"></div>
+            </div>
+            <div class="row">
+              <button id="dirBackward" type="button" class="btn btn-light btn-lg arrow" onclick="updateDirection('dirBackward')">&#10507;</button>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="row text-left">
+              <input id="message" size="35" type="text" placeholder="update status for which service?"/>
+              <button class="btn btn-success" onclick="update_data()">Submit</button>
+              <button class="btn btn-success" onclick="update_all()">Get All</button>
+            </div>
+            <div class="row" style="padding-top: 3rem;">
+              <div class="col-xs-12 col-md-6 text-break">
+                <h3 class="info-h3 text-center">Data</h3>
+                <p class="info text-left">Data: <span id="returnedData"> </span></p>
+                <p class="info text-left">Car Direction: <span id="carDirection"> </span></p>
+                <p class="info text-left">Distance travelled: <span id="distance"> </span></p>
+              </div>
+              <div class="col-xs-12 col-md-4">
+                <div class="battery">
+                    <div class="battery-head"></div>
+                    <div class="battery-body">
+                        <i class="fas fa-bolt"></i>
+                        <div id="batteryCharge" class="charge-100"></div>
+                    </div>
+                </div>
+              </div>
+              <div class="col-xs-0 col-md-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-4">
+            <analog-gauge id="speedGauge" value="50" label="Speed" min-label="0" max-label="100" min="0" max="100" suffix="cm/s" class="download-speed"></analog-gauge>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <analog-gauge id="powerGauge" value="50" label="Power" min-label="0" max-label="100" min="0" max="100" suffix="%"></analog-gauge>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <analog-gauge id="tempGauge" value="50" label="Temperature" min-label="0" max-label="100" min="0" max="100" suffix="&deg;" class="temperature"></analog-gauge>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
+

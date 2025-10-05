@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Radial Gauge</title>
+  <style>
+    .gauge {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: conic-gradient(#4caf50 0% 50%, #ddd 50% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 50px auto;
+    }
+
+    .gauge-inner {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gauge-value {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="gauge" id="gauge">
+    <div class="gauge-inner">
+      <span class="gauge-value" id="gauge-value">50%</span>
+    </div>
+  </div>
+
+  <script>
+    // Example: change to 75%
+    updateGauge(75);
+
+    function updateGauge(percent) {
+      const gauge = document.getElementById("gauge");
+      const value = document.getElementById("gauge-value");
+      gauge.style.background = `conic-gradient(#4caf50 0% ${percent}%, #ddd ${percent}% 100%)`;
+      value.textContent = `${percent}%`;
+    }
+  </script>
+</body>
+</html>
