@@ -8,7 +8,11 @@
 
 ![Phone 3](screenshots/bluz_flutter_phone_screenshot_3.jpg?raw=true "Bluz Phone 3")
 
+![Phone 4](screenshots/bluz_flutter_server_screenshot_1.png?raw=true "Bluz Server 1")
+
 ## Wifi & Electron
 ![Web 1](screenshots/wifi_electron_screenshot_1.png?raw=true "Wifi PC 1")
 
 ![Web 2](screenshots/wifi_electron_screenshot_2.png?raw=true "Wifi PC 2")
+
+![Web 3](screenshots/wifi_electron_server_screenshot_1.png?raw=true "Wifi Server 1")
