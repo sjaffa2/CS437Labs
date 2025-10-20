@@ -1,0 +1,22 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="./gauge.js"></script>
+    <link rel="stylesheet" href="./gauge.css"> 
+  </head>
+
+  <body>
+    <div class="container">
+        <analog-gauge value="1032" label="hPa" min="950" max="1050" min-label="Low" max-label="High" values="11"></analog-gauge>
+        <analog-gauge value="779" label="mbps" min="0" max="1000" class="download-speed" values="11"></analog-gauge>
+        <analog-gauge value="55" suffix="%" label="Humidity" min="0" max="100" class="humidity" values="Arid,Dry,Crisp,Low,Fair,Mild,Moist,Damp,Wet,Soggy"></analog-gauge>
+        <analog-gauge value="20" suffix="&deg;" min="-25" max="50" min-label="Cold" max-label="Hot" class="temperature" values="16"></analog-gauge>
+        <analog-gauge value="3.2" label="UV" min="0" max="11" min-label="Low" max-label="Extreme" class="uv"></analog-gauge>
+        <analog-gauge value="35" suffix="%" label="battery remaining" min="0" max="100" min-label="Low" max-label="Full" class="battery" values="0%,20%,40%,60%,80%,100%"></analog-gauge>
+    </div>
+  </body>
+</html>
+

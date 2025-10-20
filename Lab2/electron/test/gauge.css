@@ -1,0 +1,56 @@
+.humidity{
+  --analog-gauge-bg: #8CF, #6BF, #46E, #24C var(--analog-gauge-range), #0000 0 var(--analog-gauge-range);
+  --analog-gauge-start-angle: 270deg;
+  --analog-gauge-range: 220deg;
+  --analog-gauge-segments: 100;
+  --analog-gauge-values-bg: linear-gradient(210deg, light-dark(#abd7f9, #1e1b40), light-dark(#FFF, #333), #0000 85%);
+}
+.download-speed {
+  --analog-gauge-bg: #12C2FC, #6CFFD4, #78FF80 var(--analog-gauge-value, 0%), light-dark(#DDD, #222) 0 var(--analog-gauge-range),  #0000 0 var(--analog-gauge-range);
+  --analog-gauge-needle-bg: light-dark(#445, #CCC);
+  --analog-gauge-needle-cp: polygon(
+    20% 35.00%,
+    80.00% 0.00%,
+    83.00% 35.00%,
+    83.00% 65.00%,
+    80.00% 100.00%,
+    20% 65.00%);
+  --analog-gauge-segments: 10;
+}
+.temperature {
+  --analog-gauge-bdw: 5cqi;
+  --analog-gauge-bg: #69f,  #f00 var(--analog-gauge-range), #0000 0 var(--analog-gauge-range);
+  --analog-gauge-segments: 15;
+}
+.uv {
+  --_dg: calc(var(--analog-gauge-range) / var(--analog-gauge-segments));
+  --analog-gauge-bdw: 25cqi;
+  --analog-gauge-bg: 
+    #55AF33 var(--_dg), 
+    #A0C61B 0 calc(2 * var(--_dg)), 
+    #F7E98E 0 calc(3 * var(--_dg)), 
+    #F6E301 0 calc(4 * var(--_dg)), 
+    #FAB60D 0 calc(5 * var(--_dg)), 
+    #F88D2F 0 calc(6 * var(--_dg)), 
+    #F76D00 0 calc(7 * var(--_dg)), 
+    #E53015 0 calc(8 * var(--_dg)), 
+    #D90E21 0 calc(9 * var(--_dg)), 
+    #D80010 0 calc(10 * var(--_dg)), 
+    #8A4F9E 0 var(--analog-gauge-range), 
+    #0000 0 var(--analog-gauge-range);
+  --analog-gauge-segments: 11;
+}
+.battery {
+  --analog-gauge-bdw: 7.5cqi;
+  --analog-gauge-bg: red, orange, yellow, lightgreen, green var(--analog-gauge-range), #0000 0 var(--analog-gauge-range);
+  --analog-gauge-label-ps: end center;
+  --analog-gauge-segments: 10;
+}
+
+/* DEMO */
+body {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding: 2rem;
+}
