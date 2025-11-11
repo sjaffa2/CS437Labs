@@ -1,0 +1,41 @@
+.mt-30 {
+    margin-top: 1rem;
+}
+
+.arrow {
+    font-size: 50px;
+    height: 100px;
+    background-color: rgb(226, 226, 226);
+}
+
+.arrow-side {
+    /* font-size: 50px; */
+    font-size: 3rem;
+    padding: 0;
+    width: 100%;
+    background-color: rgb(226, 226, 226);
+}
+
+.arrow-col {
+    padding: 0;
+    background-color: rgb(226, 226, 226);
+}
+
+.stop-div {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.stop {
+    padding: 1rem;
+    background-color: rgb(226, 226, 226);
+}
+
+.info {
+    color: white;
+    font-size: larger;
+}
+
+.info-h3 {
+    color: white;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Radial Gauge</title>
+  <style>
+    .gauge {
+      --size: 200px;
+      --cutout: 50%;
+      --color: red;
+      --background: white;
+      width:var(--size);
+      height:var(--size);
+      border-radius:calc(var(--size) / 2);
+      background:
+        radial-gradient(var(--background) 0 var(--cutout), transparent var(--cutout) 100%),
+        conic-gradient(from -135deg, 
+        var(--color) calc(270deg*var(--value)),
+        grey calc(270deg*var(--value)) 270deg, 
+        transparent 270deg);
+      text-align: center;
+      line-height: var(--size);
+    }
+  </style>
+</head>
+<body>
+  <div class="gauge" style="--value:0.3; --color:lime; font-size:2rem;">30%</div>
+
+  <script>
+    // Example: change to 75%
+    const el = document.body.children[0];
+    myvalue = 0.0;
+    setInterval(function () {
+      myvalue = (myvalue + 0.01) % 1;
+      el.style.setProperty("--value", myvalue);
+      el.innerHTML = Math.round(myvalue*100) + "%";
+    }, 100);
+  </script>
+</body>
+</html>
