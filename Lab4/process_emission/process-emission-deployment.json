@@ -1,0 +1,39 @@
+{
+    "targetArn": "arn:aws:iot:us-east-1:<account_id>:thing/PiCore",
+    "deploymentName": "picore-deployment",
+    "components": {
+        "com.cs437lab4.clientdevices.ProcessEmission": {
+            "componentVersion": "1.0.0"
+        },
+        "com.example.clientdevices.MyHelloWorldSubscriber": {
+            "componentVersion": "1.0.0"
+        },
+        "aws.greengrass.Cli": {
+            "componentVersion": "2.15.0"
+        },
+        "aws.greengrass.LocalDebugConsole": {
+            "componentVersion": "2.4.5"
+        },
+        "aws.greengrass.Nucleus": {
+            "componentVersion": "2.15.0"
+        },
+        "aws.greengrass.clientdevices.Auth": {
+            "componentVersion": "2.5.4",
+            "configurationUpdate": {
+                "merge": "{\"deviceGroups\": {\"formatVersion\": \"2021-03-05\", \"definitions\": {\"MyDeviceGroup\": {\"selectionRule\": \"thingName: *\", \"policyName\": \"MyClientDevicePolicy\"}}, \"policies\": {\"MyClientDevicePolicy\": {\"AllowConnect\": {\"statementDescription\": \"Allow client devices to connect.\", \"operations\": [\"mqtt:connect\"], \"resources\": [\"*\"]}, \"AllowPublish\": {\"statementDescription\": \"Allow client devices to publish to all topics.\", \"operations\": [\"mqtt:publish\"], \"resources\": [\"*\"]}, \"AllowSubscribe\": {\"statementDescription\": \"Allow client devices to subscribe to all topics.\", \"operations\": [\"mqtt:subscribe\"], \"resources\": [\"*\"]}}}}}"
+            }
+        },
+        "aws.greengrass.clientdevices.mqtt.Bridge": {
+            "componentVersion": "2.3.2",
+            "configurationUpdate": {
+                "merge": "{\"mqttTopicMapping\": {\"ProcessEmissionPubToIotCore\": {\"topic\": \"client/+/emission/max_co2\", \"source\": \"Pubsub\", \"target\": \"IotCore\"}, \"ProcessEmissionIoTCoreToPub\": {\"topic\": \"client/+/emission/cloud_processed\", \"source\": \"IotCore\", \"target\": \"Pubsub\"}, \"ProcessEmissionLocalMqttToIotCore\": {\"topic\": \"client/+/emission/cloud\", \"source\": \"LocalMqtt\", \"target\": \"IotCore\"}, \"ProcessEmissionLocalMqttToPub\": {\"topic\": \"client/+/emission\", \"source\": \"LocalMqtt\", \"target\": \"Pubsub\"}, \"ProcessEmissionPubToLocalMqtt\": {\"topic\": \"client/+/emission/local_processed\", \"source\": \"Pubsub\", \"target\": \"LocalMqtt\"}}}"
+            }
+        },
+        "aws.greengrass.clientdevices.IPDetector": {
+            "componentVersion": "2.2.2"
+        },
+        "aws.greengrass.clientdevices.mqtt.Moquette": {
+            "componentVersion": "2.3.7"
+        }
+    }
+}

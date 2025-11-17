@@ -1,0 +1,89 @@
+{
+    "RecipeFormatVersion": "2020-01-25",
+    "ComponentName": "com.cs437lab4.clientdevices.ProcessEmission",
+    "ComponentVersion": "1.0.0",
+    "ComponentDescription": "A component that analyzes emission levels from client devices.",
+    "ComponentPublisher": "Amazon",
+    "ComponentConfiguration": {
+      "DefaultConfiguration": {
+        "Message": "world",
+        "publish_to_iot_topic": "client/+/emission/max_co2",
+        "publish_to_client_topic": "client/+/emission/local_processed",
+        "subscribe_to_iot_topic": "client/+/emission/cloud_processed",
+        "subscribe_to_client_topic": "client/+/emission",
+        "accessControl": {
+          "aws.greengrass.ipc.pubsub": {
+            "com.cs437lab4.clientdevices.ProcessEmission:publish:1": {
+              "policyDescription": "Allows access to publish to the component pubsub topics.",
+              "operations": [
+                "aws.greengrass#PublishToTopic"
+              ],
+              "resources": [
+                "client/*/emission/local_processed"
+              ]
+            },
+            "com.cs437lab4.clientdevices.ProcessEmission:subscribe:1": {
+              "policyDescription": "Allows access to subscribe to the component pubsub topics.",
+              "operations": [
+                "aws.greengrass#SubscribeToTopic"
+              ],
+              "resources": [
+                "client/+/emission"
+              ]
+            }
+          },
+          "aws.greengrass.ipc.mqttproxy": {
+            "com.cs437lab4.clientdevices.ProcessEmission:publish:1": {
+              "policyDescription": "Allows access to publish to the component MQTT topics.",
+              "operations": [
+                "aws.greengrass#PublishToIoTCore"
+              ],
+              "resources": [
+                "client/+/emission/max_co2"
+              ]
+            },
+            "com.cs437lab4.clientdevices.ProcessEmission:subscribe:1": {
+              "policyDescription": "Allows access to subscribe to the component MQTT topics.",
+              "operations": [
+                "aws.greengrass#SubscribeToIoTCore"
+              ],
+              "resources": [
+                "client/+/emission/cloud_processed"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Manifests": [
+      {
+        "Platform": {
+          "os": "linux"
+        },
+        "Lifecycle": {
+          "install": "pip install awsiotsdk --break-system-packages",
+          "Run": "python3 -u {artifacts:path}/process_emission.py --message \"{configuration:/Message}\" --publish-to-iot-topic \"{configuration:/publish_to_iot_topic}\" --publish-to-client-topic \"{configuration:/publish_to_client_topic}\" --subscribe-to-iot-topic \"{configuration:/subscribe_to_iot_topic}\" --subscribe-to-client-topic \"{configuration:/subscribe_to_client_topic}\""
+        },
+        "Artifacts": [
+            {
+                "URI": "s3://<bucket_name>/artifacts/com.cs437lab4.clientdevices.ProcessEmission/1.0.0/process_emission.py"
+            }
+        ]
+      },
+      {
+        "Platform": {
+          "os": "windows"
+        },
+        "Lifecycle": {
+          "install": "pip install awsiotsdk --break-system-packages",
+          "Run": "python3 -u {artifacts:path}/process_emission.py --message \"{configuration:/Message}\" --publish-to-iot-topic \"{configuration:/publish_to_iot_topic}\" --publish-to-client-topic \"{configuration:/publish_to_client_topic}\" --subscribe-to-iot-topic \"{configuration:/subscribe_to_iot_topic}\" --subscribe-to-client-topic \"{configuration:/subscribe_to_client_topic}\""
+        },
+        "Artifacts": [
+            {
+                "URI": "s3://<bucket_name>/artifacts/com.cs437lab4.clientdevices.ProcessEmission/1.0.0/process_emission.py"
+            }
+        ]
+      }
+    ]
+}
+  
