@@ -122,6 +122,33 @@
         </RadioGroup>
 
         <TextView
+            android:id="@+id/textViewModelTypeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:fontFamily="monospace"
+            android:textSize="20sp"
+            android:text="Model Type"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroupModelType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <RadioButton
+                android:id="@+id/modelTypeImageClassification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Image Classification" />
+
+            <RadioButton
+                android:id="@+id/modelTypeObjectDetection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Object Detection" />
+        </RadioGroup>
+
+        <TextView
             android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="156dp" />
