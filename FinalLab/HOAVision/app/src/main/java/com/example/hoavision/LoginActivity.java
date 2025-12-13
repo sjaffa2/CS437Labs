@@ -28,6 +28,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+//import org.tensorflow.lite.examples.objectdetection.databinding.ActivityMainBinding
+import com.example.hoavision.databinding.ActivityLoginBinding;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private RadioGroup radioGroup;

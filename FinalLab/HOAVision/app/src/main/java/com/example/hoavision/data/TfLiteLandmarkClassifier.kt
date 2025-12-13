@@ -28,7 +28,7 @@ class TfLiteLandmarkClassifier (
         try{
             classifier = ImageClassifier.createFromFileAndOptions(
                 context,
-                "landmarks.tflite",
+                "hoa32.tflite",
                 options
             )
         } catch (e: IllegalStateException) {
