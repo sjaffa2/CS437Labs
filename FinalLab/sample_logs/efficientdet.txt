@@ -1,0 +1,103 @@
+loading annotations into memory...
+Done (t=0.01s)
+creating index...
+index created!
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:627: UserWarning: This DataLoader will create 12 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+[Warning] Ignoring Error(s) in loading state_dict for EfficientDetBackbone:
+	size mismatch for classifier.header.pointwise_conv.conv.weight: copying a param with shape torch.Size([810, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([9, 64, 1, 1]).
+	size mismatch for classifier.header.pointwise_conv.conv.bias: copying a param with shape torch.Size([810]) from checkpoint, the shape in current model is torch.Size([9]).
+[Warning] Don't panic if you see this, this might be because you load a pretrained weights with different number of classes. The rest of the weights should be loaded already.
+[Info] loaded weights: efficientdet-d0.pth, resuming checkpoint from step: 0
+[Info] freezed backbone
+  0% 0/3 [00:00<?, ?it/s]/content/Yet-Another-EfficientDet-Pytorch/train-efficientdet.py:238: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  epoch_loss.append(float(loss))
+Step: 2. Epoch: 0/10. Iteration: 3/3. Cls loss: 239.80103. Reg loss: 5.00064. Total loss: 244.80167: 100% 3/3 [00:16<00:00,  5.47s/it]
+/usr/local/lib/python3.12/dist-packages/numpy/_core/fromnumeric.py:3596: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/usr/local/lib/python3.12/dist-packages/numpy/_core/_methods.py:138: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+Val. Epoch: 0/10. Classification loss: nan. Regression loss: nan. Total loss: nan
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+Step: 5. Epoch: 1/10. Iteration: 3/3. Cls loss: 109.16055. Reg loss: 4.28973. Total loss: 113.45027: 100% 3/3 [00:09<00:00,  3.10s/it]
+Val. Epoch: 1/10. Classification loss: nan. Regression loss: nan. Total loss: nan
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+Step: 8. Epoch: 2/10. Iteration: 3/3. Cls loss: 33.20296. Reg loss: 3.98665. Total loss: 37.18960: 100% 3/3 [00:08<00:00,  2.81s/it]
+Val. Epoch: 2/10. Classification loss: nan. Regression loss: nan. Total loss: nan
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+Step: 11. Epoch: 3/10. Iteration: 3/3. Cls loss: 5.23175. Reg loss: 3.99564. Total loss: 9.22739: 100% 3/3 [00:07<00:00,  2.53s/it]
+Val. Epoch: 3/10. Classification loss: nan. Regression loss: nan. Total loss: nan
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+Step: 14. Epoch: 4/10. Iteration: 3/3. Cls loss: 1.73691. Reg loss: 3.92520. Total loss: 5.66211: 100% 3/3 [00:09<00:00,  3.07s/it]
+Val. Epoch: 4/10. Classification loss: nan. Regression loss: nan. Total loss: nan
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+Step: 17. Epoch: 5/10. Iteration: 3/3. Cls loss: 1.11263. Reg loss: 3.67073. Total loss: 4.78337: 100% 3/3 [00:08<00:00,  2.69s/it]
+Val. Epoch: 5/10. Classification loss: nan. Regression loss: nan. Total loss: nan
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+Step: 20. Epoch: 6/10. Iteration: 3/3. Cls loss: 0.90159. Reg loss: 3.23427. Total loss: 4.13586: 100% 3/3 [00:09<00:00,  3.03s/it]
+Val. Epoch: 6/10. Classification loss: nan. Regression loss: nan. Total loss: nan
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+Step: 23. Epoch: 7/10. Iteration: 3/3. Cls loss: 0.82208. Reg loss: 3.56772. Total loss: 4.38979: 100% 3/3 [00:08<00:00,  2.93s/it]
+Val. Epoch: 7/10. Classification loss: nan. Regression loss: nan. Total loss: nan
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+Step: 26. Epoch: 8/10. Iteration: 3/3. Cls loss: 0.81690. Reg loss: 3.09552. Total loss: 3.91242: 100% 3/3 [00:07<00:00,  2.66s/it]
+Val. Epoch: 8/10. Classification loss: nan. Regression loss: nan. Total loss: nan
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+Step: 29. Epoch: 9/10. Iteration: 3/3. Cls loss: 0.85240. Reg loss: 3.40738. Total loss: 4.25977: 100% 3/3 [00:08<00:00,  2.91s/it]
+Val. Epoch: 9/10. Classification loss: nan. Regression loss: nan. Total loss: nan
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.
+NaN or Inf found in input tensor.

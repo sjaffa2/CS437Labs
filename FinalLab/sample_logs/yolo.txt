@@ -1,0 +1,97 @@
+Creating new Ultralytics Settings v0.0.6 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/root/.config/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart/#ultralytics-settings.
+Downloading https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11s.pt to 'yolo11s.pt': 100% ━━━━━━━━━━━━ 18.4MB 117.0MB/s 0.2s
+Ultralytics 8.3.235 🚀 Python-3.12.12 torch-2.9.0+cu126 CPU (Intel Xeon CPU @ 2.20GHz)
+engine/trainer: agnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=16, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, compile=False, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=/content/data.yaml, degrees=0.0, deterministic=True, device=cpu, dfl=1.5, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=40, erasing=0.4, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, half=False, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, imgsz=640, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.01, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=yolo11s.pt, momentum=0.937, mosaic=1.0, multi_scale=False, name=train, nbs=64, nms=False, opset=None, optimize=False, optimizer=auto, overlap_mask=True, patience=100, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=None, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=/content/runs/detect/train, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=0, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=8, workspace=None
+Downloading https://ultralytics.com/assets/Arial.ttf to '/root/.config/Ultralytics/Arial.ttf': 100% ━━━━━━━━━━━━ 755.1KB 22.3MB/s 0.0s
+Overriding model.yaml nc=80 with nc=1
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1       928  ultralytics.nn.modules.conv.Conv             [3, 32, 3, 2]                 
+  1                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]                
+  2                  -1  1     26080  ultralytics.nn.modules.block.C3k2            [64, 128, 1, False, 0.25]     
+  3                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+  4                  -1  1    103360  ultralytics.nn.modules.block.C3k2            [128, 256, 1, False, 0.25]    
+  5                  -1  1    590336  ultralytics.nn.modules.conv.Conv             [256, 256, 3, 2]              
+  6                  -1  1    346112  ultralytics.nn.modules.block.C3k2            [256, 256, 1, True]           
+  7                  -1  1   1180672  ultralytics.nn.modules.conv.Conv             [256, 512, 3, 2]              
+  8                  -1  1   1380352  ultralytics.nn.modules.block.C3k2            [512, 512, 1, True]           
+  9                  -1  1    656896  ultralytics.nn.modules.block.SPPF            [512, 512, 5]                 
+ 10                  -1  1    990976  ultralytics.nn.modules.block.C2PSA           [512, 512, 1]                 
+ 11                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 12             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 13                  -1  1    443776  ultralytics.nn.modules.block.C3k2            [768, 256, 1, False]          
+ 14                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 15             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 16                  -1  1    127680  ultralytics.nn.modules.block.C3k2            [512, 128, 1, False]          
+ 17                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+ 18            [-1, 13]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 19                  -1  1    345472  ultralytics.nn.modules.block.C3k2            [384, 256, 1, False]          
+ 20                  -1  1    590336  ultralytics.nn.modules.conv.Conv             [256, 256, 3, 2]              
+ 21            [-1, 10]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 22                  -1  1   1511424  ultralytics.nn.modules.block.C3k2            [768, 512, 1, True]           
+ 23        [16, 19, 22]  1    819795  ultralytics.nn.modules.head.Detect           [1, [128, 256, 512]]          
+YOLO11s summary: 181 layers, 9,428,179 parameters, 9,428,163 gradients, 21.5 GFLOPs
+
+Transferred 493/499 items from pretrained weights
+Freezing layer 'model.23.dfl.conv.weight'
+train: Fast image access ✅ (ping: 0.0±0.0 ms, read: 1164.9±698.1 MB/s, size: 692.5 KB)
+train: Scanning /content/data/train/labels... 374 images, 0 backgrounds, 6 corrupt: 100% ━━━━━━━━━━━━ 374/374 429.6it/s 0.9s
+train: /content/data/train/images/4_aug_1.jpg: ignoring corrupt image/label: non-normalized or out of bounds coordinates [     1.2745      1.1175      1.2982      1.2514]
+train: /content/data/train/images/8_aug_1.jpg: ignoring corrupt image/label: non-normalized or out of bounds coordinates [     3.6148      2.0055      1.5873      3.0628      1.7213      3.2018      3.7541      1.6066      3.6055      1.4645]
+train: /content/data/train/images/8_aug_2.jpg: ignoring corrupt image/label: non-normalized or out of bounds coordinates [     2.4563      1.0109       1.612      1.6473      2.5601      1.3825        2.76      4.2842      1.4645        4.04      2.2951      1.4536]
+train: /content/data/train/images/8_aug_3.jpg: ignoring corrupt image/label: non-normalized or out of bounds coordinates [      3.694      2.1312      1.5273      3.1393      1.8743         3.3      3.8688      1.7377      3.8109      1.6066]
+train: /content/data/train/images/9_aug_1.jpg: ignoring corrupt image/label: non-normalized or out of bounds coordinates [     1.0855       1.224      1.4655      2.4262]
+train: /content/data/train/images/9_aug_2.jpg: ignoring corrupt image/label: non-normalized or out of bounds coordinates [     1.0847      1.3382      2.1694]
+train: New cache created: /content/data/train/labels.cache
+albumentations: Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
+val: Fast image access ✅ (ping: 0.0±0.0 ms, read: 487.0±199.6 MB/s, size: 34.6 KB)
+val: Scanning /content/data/validation/labels... 42 images, 0 backgrounds, 1 corrupt: 100% ━━━━━━━━━━━━ 42/42 665.3it/s 0.1s
+val: /content/data/validation/images/4_aug_2.jpg: ignoring corrupt image/label: non-normalized or out of bounds coordinates [     1.2745       1.082      1.2836      1.1913]
+val: New cache created: /content/data/validation/labels.cache
+Plotting labels to /content/runs/detect/train/labels.jpg... 
+optimizer: 'optimizer=auto' found, ignoring 'lr0=0.01' and 'momentum=0.937' and determining best 'optimizer', 'lr0' and 'momentum' automatically... 
+optimizer: AdamW(lr=0.002, momentum=0.9) with parameter groups 81 weight(decay=0.0), 88 weight(decay=0.0005), 87 bias(decay=0.0)
+Image sizes 640 train, 640 val
+Using 0 dataloader workers
+Logging results to /content/runs/detect/train
+Starting training for 40 epochs...
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       1/40         0G      1.514      2.303      1.429        134        640: 100% ━━━━━━━━━━━━ 23/23 37.5s/it 14:23
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 13.7s/it 27.3s
+                   all         41        158      0.723      0.608      0.655      0.352
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       2/40         0G       1.45      1.479      1.359        100        640: 100% ━━━━━━━━━━━━ 23/23 41.5s/it 15:55
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 14.7s/it 29.3s
+                   all         41        158       0.67        0.5      0.519      0.245
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       3/40         0G      1.499      1.393      1.435         70        640: 100% ━━━━━━━━━━━━ 23/23 41.4s/it 15:53
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 14.7s/it 29.4s
+                   all         41        158      0.105      0.335     0.0891     0.0353
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       4/40         0G      1.524      1.316      1.426        110        640: 100% ━━━━━━━━━━━━ 23/23 41.1s/it 15:44
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 13.6s/it 27.1s
+                   all         41        158     0.0664     0.0949     0.0166     0.0065
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       5/40         0G      1.561      1.409      1.467        145        640: 100% ━━━━━━━━━━━━ 23/23 41.4s/it 15:52
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 14.1s/it 28.3s
+                   all         41        158      0.331      0.354      0.251      0.115
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       6/40         0G       1.58      1.351      1.454        141        640: 100% ━━━━━━━━━━━━ 23/23 41.9s/it 16:04
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 15.2s/it 30.3s
+                   all         41        158     0.0913      0.114     0.0259    0.00842
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       7/40         0G       1.54      1.292      1.419        137        640: 100% ━━━━━━━━━━━━ 23/23 42.0s/it 16:05
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 14.6s/it 29.3s
+                   all         41        158       0.26      0.253      0.148     0.0568
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       8/40         0G       1.49      1.293      1.374        131        640: 30% ━━━╸──────── 7/23 47.6s/it 5:52<12:42
