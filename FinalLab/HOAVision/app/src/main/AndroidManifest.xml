@@ -39,6 +39,12 @@
             android:name=".ReportActivity"
             android:theme="@style/Theme.AppCompat.Light"
             android:exported="true" />
+        <activity
+            android:name=".DetectActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>

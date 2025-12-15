@@ -40,6 +40,8 @@ import com.example.hoavision.domain.Classification
 import com.example.hoavision.presentation.CameraPreview
 import com.example.hoavision.presentation.LandmarkImageAnalyzer
 import com.example.hoavision.ui.theme.HOAVisionTheme
+import java.text.SimpleDateFormat
+import java.util.Date
 
 
 class MainActivity : ComponentActivity() {
@@ -157,11 +159,15 @@ class MainActivity : ComponentActivity() {
 
     private fun onClick(selectedOption: MutableState<String>, name: String) {
 
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+        val currentDate = sdf.format(Date())
+
         val prefs = getSharedPreferences("MyGlobalPrefs", MODE_PRIVATE)
 
         val violationList = prefs.getStringSet(selectedOption.value, mutableSetOf())
-        violationList?.add(name)
+        violationList?.add(name  + " detected at: " + currentDate)
         val editor = prefs.edit()
+
         editor.putStringSet(selectedOption.value, violationList)
         editor.apply()
 

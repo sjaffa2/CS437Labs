@@ -28,10 +28,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private RadioGroup radioGroup;
     private RadioButton hoaAdmin, house1, house2, house3;
+
+    private RadioGroup radioGroupModelType;
+    private RadioButton modelTypeImageClassification, modelTypeObjectDetection;
     /**
      * Initializes the login activity, sets up the database helper, and registers click listeners.
      *
@@ -50,10 +54,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         buttonNew.setOnClickListener(this);
 
         radioGroup = findViewById(R.id.radioGroup);
+        radioGroupModelType = findViewById(R.id.radioGroupModelType);
         hoaAdmin = findViewById(R.id.hoaAdmin);
         house1 = findViewById(R.id.house1);
         house2 = findViewById(R.id.house2);
         house3 = findViewById(R.id.house3);
+        modelTypeImageClassification = findViewById(R.id.modelTypeImageClassification);
+        modelTypeObjectDetection = findViewById(R.id.modelTypeObjectDetection);
 
     }
 
@@ -70,8 +77,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // Determine which theme is selected
         int selectedTheme;
         int selectedId = radioGroup.getCheckedRadioButtonId();
+        int selectedModelTypeId = radioGroupModelType.getCheckedRadioButtonId();
         if (selectedId == R.id.hoaAdmin) {
-            goToMainActivity();
+            if (selectedModelTypeId == R.id.modelTypeImageClassification) {
+                goToMainActivity();
+            } else {
+                goToObjectDetectionActivity();
+            }
         } else if (selectedId == R.id.house1) {
             goToReportActivity("House1");
         } else if (selectedId == R.id.house2) {
@@ -84,6 +96,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     private void goToMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    private void goToObjectDetectionActivity() {
+        Intent intent = new Intent(this, DetectActivity.class);
         startActivity(intent);
     }
     private void goToReportActivity(String userName) {

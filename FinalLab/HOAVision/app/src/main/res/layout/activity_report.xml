@@ -28,8 +28,14 @@
         <TextView
             android:id="@+id/textViewReport"
             android:layout_width="match_parent"
-            android:layout_height="179dp"
+            android:layout_height="50dp"
             android:text="Report Details" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/listview"
+            />
 
 
     </LinearLayout>
