@@ -31,13 +31,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hoavision.ui.theme.ListViewAdapter;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+
 public class ReportActivity extends AppCompatActivity implements View.OnClickListener{
 
     static String user;
+    static ListView listView;
+    static ArrayList<String> items;
+    static ListViewAdapter adapter;
 
     /**
      * Initializes the login activity, sets up the database helper, and registers click listeners.
@@ -53,18 +59,19 @@ public class ReportActivity extends AppCompatActivity implements View.OnClickLis
         SharedPreferences prefs = getSharedPreferences("MyGlobalPrefs", MODE_PRIVATE);
         Set<String> violationList = prefs.getStringSet(user, new HashSet<>());
         TextView myTextView = findViewById(R.id.textViewReport);
-        System.out.println("yoohoo");
-        System.out.println(violationList);
-        String s = "";
+        items = new ArrayList<>();
         if(!violationList.isEmpty()){
             for(String v : violationList){
-                s += (v + "\n");
+                items.add(v);
             }
-            myTextView.setText(s);
+            myTextView.setText("");
         }
 
         else myTextView.setText("No Violations!");
-        System.out.println(s);
+
+        listView = findViewById(R.id.listview);
+        adapter = new ListViewAdapter(getApplicationContext(), items);
+        listView.setAdapter(adapter);
 
 
 

@@ -4,19 +4,20 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.os.SystemClock
 import android.util.Log
+import android.widget.RadioButton
 import com.example.hoavision.data.BoundingBox
-import org.tensorflow.lite.support.image.ImageProcessor
-import org.tensorflow.lite.support.image.TensorImage
-import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.DataType
+import org.tensorflow.lite.Interpreter
+import org.tensorflow.lite.support.common.FileUtil
 import org.tensorflow.lite.support.common.ops.CastOp
 import org.tensorflow.lite.support.common.ops.NormalizeOp
-import org.tensorflow.lite.support.common.FileUtil
-import java.io.InputStream
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.io.IOException
+import org.tensorflow.lite.support.image.ImageProcessor
+import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStream
+import java.io.InputStreamReader
 
 
 class ObjectDetectorHelper(
@@ -25,6 +26,7 @@ class ObjectDetectorHelper(
     var maxResults: Int = 10,
     var currentModel: Int = 0,
     val context: Context,
+    var topClass: String = "",
     private val detectorListener: DetectorListener
 ) {
     private var interpreter: Interpreter? = null
@@ -129,7 +131,7 @@ class ObjectDetectorHelper(
         )
     }
 
-    private fun bestBox(array: FloatArray) : List<BoundingBox>? {
+    fun bestBox(array: FloatArray) : List<BoundingBox>? {
         var listofboxes = array.size
         Log.d("bestBox logs: ", listofboxes.toString())
 
@@ -185,6 +187,7 @@ class ObjectDetectorHelper(
     private fun applyNMS(boxes: List<BoundingBox>) : MutableList<BoundingBox> {
         val sortedBoxes = boxes.sortedByDescending { it.cnf }.toMutableList()
         val selectedBoxes = mutableListOf<BoundingBox>()
+        topClass = selectedBoxes.toString();
 
         while(sortedBoxes.isNotEmpty()) {
             val first = sortedBoxes.first()
@@ -202,6 +205,10 @@ class ObjectDetectorHelper(
         }
 
         return selectedBoxes
+    }
+
+    fun getTopClass1():String{
+        return topClass
     }
 
     private fun calculateIoU(box1: BoundingBox, box2: BoundingBox): Float {

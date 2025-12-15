@@ -2,6 +2,7 @@ package com.example.hoavision.fragments
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -75,7 +76,12 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         savedInstanceState: Bundle?
     ): View {
         _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
-
+        objectDetectorHelper = ObjectDetectorHelper(
+            context = requireContext(),
+            detectorListener = this,
+            topClass = ""
+        )
+        sendDataToActivity(objectDetectorHelper.getTopClass1())
         return fragmentCameraBinding.root
     }
 
@@ -85,7 +91,8 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
 
         objectDetectorHelper = ObjectDetectorHelper(
             context = requireContext(),
-            detectorListener = this
+            detectorListener = this,
+            topClass = ""
         )
 
         // Initialize our background executor
@@ -272,6 +279,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         imageHeight: Int,
         imageWidth: Int
     ) {
+
         activity?.runOnUiThread {
             fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text = String.format("%d ms", inferenceTime)
 
@@ -284,6 +292,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
                 invalidate()
             }
         }
+        sendDataToActivity(boundingBoxes.get(0).clsName)
     }
 
     override fun onEmptyDetect() {
@@ -302,5 +311,26 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         private val REQUIRED_PERMISSIONS = mutableListOf (
             Manifest.permission.CAMERA
         ).toTypedArray()
+    }
+
+    interface OnDataPassListener {
+        fun onDataPassed(data: String)
+    }
+
+    private var callback: OnDataPassListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callback = context as? OnDataPassListener
+            ?: throw ClassCastException("$context must implement OnDataPassListener")
+    }
+
+    fun sendDataToActivity(label: String) {
+        callback?.onDataPassed(label)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        callback = null
     }
 }
